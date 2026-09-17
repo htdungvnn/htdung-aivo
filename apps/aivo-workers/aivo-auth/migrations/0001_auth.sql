@@ -1,0 +1,6 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS accounts(id TEXT PRIMARY KEY,email TEXT UNIQUE COLLATE NOCASE,password_hash TEXT,password_salt TEXT,password_iterations INTEGER,status TEXT NOT NULL DEFAULT 'pending_verification',email_verified_at TEXT,display_name TEXT,avatar_url TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS identities(id TEXT PRIMARY KEY,account_id TEXT NOT NULL,provider TEXT NOT NULL,provider_subject TEXT NOT NULL,provider_email TEXT,created_at TEXT NOT NULL,UNIQUE(provider,provider_subject),FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE);
+CREATE TABLE IF NOT EXISTS refresh_tokens(id TEXT PRIMARY KEY,account_id TEXT NOT NULL,family_id TEXT NOT NULL,token_hash TEXT NOT NULL UNIQUE,expires_at TEXT NOT NULL,revoked_at TEXT,replaced_by_id TEXT,created_at TEXT NOT NULL,FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE);
+CREATE TABLE IF NOT EXISTS action_tokens(id TEXT PRIMARY KEY,account_id TEXT NOT NULL,type TEXT NOT NULL CHECK(type IN('email_verification','password_reset')),token_hash TEXT NOT NULL UNIQUE,expires_at TEXT NOT NULL,consumed_at TEXT,created_at TEXT NOT NULL,FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE);
+CREATE INDEX IF NOT EXISTS idx_action_token_hash ON action_tokens(token_hash);

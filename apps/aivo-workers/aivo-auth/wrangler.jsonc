@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aivo-auth",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-17",
+  "observability": { "enabled": true },
+  "vars": {
+    "APP_ORIGIN": "http://localhost:3000",
+    "GOOGLE_CLIENT_IDS": "REPLACE",
+    "FACEBOOK_APP_ID": "REPLACE",
+    "ACCESS_TTL": "900",
+    "REFRESH_TTL": "2592000",
+    "ACTION_TTL": "1800",
+    "PASSWORD_ITERATIONS": "210000",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aivo-auth-db",
+      "database_id": "REPLACE",
+    },
+  ],
+  "queues": {
+    "producers": [{ "binding": "EMAIL_QUEUE", "queue": "aivo-email" }],
+  },
+}

@@ -1,0 +1,24 @@
+{
+  "name": "aivo-auth",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "wrangler dev --port 8788 --inspector-port 9238",
+    "deploy": "wrangler deploy --minify",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply aivo-auth-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply aivo-auth-db --remote"
+  },
+  "dependencies": {
+    "@aivo/auth-contracts": "workspace:*",
+    "hono": "^4.13.8",
+    "jose": "^6.1.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260917.1",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.133.0"
+  }
+}

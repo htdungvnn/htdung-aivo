@@ -1,0 +1,20 @@
+{
+  "name": "aivo-mail",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "wrangler dev --port 8789 --inspector-port 9239",
+    "deploy": "wrangler deploy --minify",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aivo/auth-contracts": "workspace:*",
+    "hono": "^4.13.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260917.1",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.133.0"
+  }
+}
