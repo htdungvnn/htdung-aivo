@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aivo-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-17",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "APP_NAME": "AIVO API Gateway",
+    "APP_VERSION": "1.0.0",
+    "ENVIRONMENT": "development",
+    "LOG_LEVEL": "info",
+    "ALLOWED_ORIGINS": "http://localhost:3000,http://localhost:8081",
+    "AUTH_SERVICE_URL": "http://localhost:8791",
+    "PROFILE_SERVICE_URL": "http://localhost:8792",
+    "WORKOUT_SERVICE_URL": "http://localhost:8793",
+    "NUTRITION_SERVICE_URL": "http://localhost:8794",
+    "AI_SERVICE_URL": "http://localhost:8795",
+    "BILLING_SERVICE_URL": "http://localhost:8796"
+  }
+}

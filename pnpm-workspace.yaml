@@ -1,0 +1,17 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "apps/aivo-workers/*"
+onlyBuiltDependencies:
+  - esbuild
+  - workerd
+allowBuilds:
+  esbuild: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - miniflare@5.20260916.0-alpha
+  - wrangler@4.133.0
+  - '@sentry/cloudflare@10.75.0'
+  - '@sentry/core@10.75.0'
+  - '@sentry/server-utils@10.75.0'
+  - '@cloudflare/workers-types@5.20260917.1'
